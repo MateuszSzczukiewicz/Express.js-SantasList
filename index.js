@@ -1,10 +1,13 @@
 const express = require("express");
+require("express-async-errors");
 const methodOverride = require("method-override");
 const { engine } = require("express-handlebars");
 const { handleError } = require("./utils/errors");
 const { homeRouter } = require("./routers/home");
 const { childRouter } = require("./routers/child");
 const { giftRouter } = require("./routers/gift");
+require("utils/db");
+const { handlebarsHelpers } = require("./utils/handlebars-helpers");
 
 const app = express();
 
@@ -20,7 +23,7 @@ app.engine(
   ".hbs",
   engine({
     extname: ".hbs",
-    // helpers: handlebarsHelpers,
+    helpers: handlebarsHelpers,
   }),
 );
 app.set("view engine", ".hbs");
