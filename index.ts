@@ -3,7 +3,6 @@ import * as cors from "cors";
 import "express-async-errors";
 import { giftRouter } from "./routers/gift";
 import { childRouter } from "./routers/child";
-import { homeRouter } from "./routers/home";
 import { handleError } from "./utils/errors";
 import "utils/db";
 
@@ -17,7 +16,6 @@ app.use(
 app.use(express.static("public"));
 app.use(express.json());
 
-app.use("/", homeRouter);
 app.use("/child", childRouter);
 app.use("/gift", giftRouter);
 
